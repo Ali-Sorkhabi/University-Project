@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="پایان نامه،عنوان،موضوع،مقدمه،فصل ها،صفحات،بخش های پایان نامه،وب سایت موسیقی،بررسی">
+    <meta name="description" content="در این پایان نامه وب سایت موسیقی تمام بخش هایش از عنوان تا بخش های دیگرش تحت بررسی خواهد شد">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروژه</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'path/to/favicon.ico' %}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            direction: rtl;
+        }
+        .input {
+            background-color: cyan;
+            color: black;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+        .main button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .main {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+    <div class="input">
+        <h1>پروژه</h1>
+    </div>
+
+    <hr/>
+
+    <div>
+        <h1>عنوان:</h1>
+        <p>وب سایت در زمینه موسیقی</p>
+
+        <h1>موضوع:</h1>
+        <p>طراحی وب سایت با فریم ورک Django</p>
+
+        <h1>دانشجو:</h1>
+        <p>محمد علی عظیم نسب سرخابی</p>
+
+        <h1>شماره دانشجویی:</h1>
+        <p>402236012180008</p>
+
+        <h1>دانشگاه:</h1>
+        <p>مرکز علمی کاربردی سازمان مدیریت صنعتی استان آذربایجان شرقی</p>
+
+        <h1>رشته تحصیلی:</h1>
+        <p>مهندسی فناوری برنامه سازی تحت وب</p>
+
+        <h1>استاد راهنما:</h1>
+        <p>دکتر رضا نقی زاده مجید</p>
+    </div>
+
+    <hr/>
+
+    <h1>فهرست:</h1>
+    <div class="main">
+        <button onclick="alert('Balsamiq')">Balsamiq</button>
+        <button onclick="alert('صفحات و توضیحات')">صفحات و توضیحات</button>
+        <button onclick="alert('نتیجه')">نتیجه</button>
+    </div>
+
+    <script>
+        // اگر دکمه‌های اسکرول اضافه کردی:
+        const STEP = 300;
+
+        const upBtn = document.getElementById('upBtn');
+        const downBtn = document.getElementById('downBtn');
+
+        if (upBtn) {
+            upBtn.addEventListener('click', () => {
+                window.scrollBy({ top: -STEP, behavior: 'smooth' });
+            });
+        }
+
+        if (downBtn) {
+            downBtn.addEventListener('click', () => {
+                window.scrollBy({ top: STEP, behavior: 'smooth' });
+            });
+        }
+    </script>
+</body>
+</html>
