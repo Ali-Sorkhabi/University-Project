@@ -1,0 +1,47 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                                                                                                    <meta charset="UTF-8">
+                                                                                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                                                                                    <title>پشتبانی</title>
+<style>
+                                                                                                    .main{
+                                                                                                                                                                                                        background-color:blue;
+                                                                                                                                                                                                        color:aliceblue;
+                                                                                                                                                                                                        border2px solid black; 
+                                                                                                    padding: 2px;
+margin: 20px;
+text-align:center;                                                     }
+</style>
+</head>
+<body>
+                  <div class="main">
+<b>پشتبانی</b>
+                  </div>
+                  <form action="https://web.whatsapp.com/"">
+                                                                                                    {% csrf_token %} 
+                                                                                                    <input type="text" name="firstname" placeholder="نام">
+                                                                                                    <br/> 
+                                                                                                    <input type="text" name="lastname" placeholder="نام خانوادگی">
+                                                                                                    <br/> 
+                                                                                                    <input type="text" name="phonenumber" placeholder="شماره موبایل"> 
+                                                                                                    <br/> 
+                                                                                                    <select>
+                                                                                                                                                                                                        <option>انتخاب</option>
+                                                                                                                                                                                                        <option>شکایات</option>
+                                                                                                                                                                                                        <option>انتقادات</option>
+                                                                                                                                                                                                        <option>سوالات</option>
+                                                                                                                                                                                                        <option>سایر موارد</option>
+                                                                                                    <br/>
+<input type="text" name="subject" placeholder="موضوع">                 </select>
+                                                                                                    <textarea style="width:100%; hegith:140px;">
+
+                                                                                                    </textarea>
+                                                                                                    <input type="submit" value="ارسال">
+                                                                                                    <br/>
+                                                                                                    <input type="submit" value="پاک کردن">
+
+                  </form>                                                                                  
+</body>
+</html>
