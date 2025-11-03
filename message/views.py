@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.views.generic import TemplateView 
 from .models import Message, Home2, Home3 
-from .forms import  Home2Forme, Home3Forme 
+from .forms import Home2Form, Home3Form
 # from .views import MessageView, Home2View, Home3View 
 
 class MessageView(TemplateView):
