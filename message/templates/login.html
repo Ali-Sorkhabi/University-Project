@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام</title>
+    <style>
+        .main {
+            background-color: purple; 
+            color: aliceblue;
+            border: 2px solid black; 
+            padding: 20px;
+            margin: 20px auto;
+            text-align: center;
+            width: 400px;
+            border-radius: 10px;
+        }
+
+        .main input {
+            display: block;
+            width: 90%;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .main button {
+            padding: 10px 20px;
+            background-color: aliceblue;
+            color: purple;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .main button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>فرم ثبت نام</h2>
+        <form action="{% url 'home1' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="first_name" placeholder="نام" required>
+            <input type="text" name="last_name" placeholder="نام خانوادگی" required>
+            <input type="tel" name="phone" placeholder="شماره موبایل" required>
+            <input type="email" name="email" placeholder="ایمیل" required>
+            <input type="text" name="username" placeholder="نام کاربری" required>
+            <input type="password" name="password" placeholder="رمز عبور" required>
+            <button type="submit">ارسال</button>
