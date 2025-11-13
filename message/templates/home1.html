@@ -1,130 +1,111 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
+    <link rel="icon" type="images/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <meta charset="UTF-8">
+    <meta name="keywords" content="کاربران، آپلود،کارها،اشتراک ،آپلود،صوت،عکس،فیلم،فایل متنی در، وب، موسیقی ، بگذارند">
+    <meta name="description" content="کاربران بتوان عکس و فیلم صوت و فایل متنی کارهایشان را در وب سایت موسیقی به اشتراک بگذارند">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>موسیقی</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+<style>
+    .main{
+        background-color:purple;
+    color:aliceblue;
+    border:2px solid black; 
+    padding: 20px;
+    margin: 20px;
+    text-align:center;
+    
+} 
+.float{
+    direction:rtl;
+}
+</style>
+</head>
+<body>
+    <header>
+        <form action="{% url 'home1' %}" method="GET">
+        {% csrf_token %}
+            <input type="text" name="search" placeholder="جستجو">
+            <input type="submit" value="جستجو">
 
-        /* هدر */
-        header {
-            background-color: purple;
-            color: white;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
+        </form> 
+    <div style="text-align:center;">
+        &nbsp;
+        &nbsp;
+        &nbsp; 
+        <a href="#">خانه</a>
+        &nbsp; 
+        <a href="{% url 'home1' %}">صفحه اصلی</a>
+        &nbsp; 
+        <a href="{% url 'home2' %}">پشتبانی</a>
+        &nbsp; 
+        <a href="{% url 'home3' %}">تماس با ما</a>
+    </div> 
+    </header>
+    <div class="float">
+<img src="{% static 'images/s.jpg' %}" alt="images" width="10%">
+        <div class="main">
+        <h1>موسیقی</h1>
+        </div>
+    </div> 
+<hr/> 
+     <form action="{% url 'home1' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" id="file">
+        <input type="submit" value="آپلود">
 
-        .logo {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            flex: 1 1 100%;
-        }
+     </form> 
+     <hr/> 
+    <div style="text-align:right;">
+        <h1>دیدگاه خودتان را بنویسید.</h1>
+        <form action="{% url 'home1' %}" method="post">
+            {% csrf_token %}
+            <br/>
+            <input type="text" name="firstname" placeholder="نام">
+            <br/>
+            <input type="text" name="lastname" placeholder="نام خانوادگی">
+            <br/>
+            <input type="text" name="subject" placeholder="موضوع">
+            <br/>
+            <textarea style="width:10%; height:120px;">
+                متن 
+            </textarea>
+            <br/>
+            <input type="submit" value="ارسال">
+        </form>
 
-        nav {
-            display: flex;
-            gap: 15px;
-            flex: 1 1 100%;
-            justify-content: center;
-            margin: 10px 0;
-        }
+     </div>
+     <script>
+  document.getElementById('chatForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // جلوگیری از رفرش صفحه
+    const message = document.getElementById('message').value;
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    // ارسال به سرور
+    fetch('/send-message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    })
+    .then(res => res.json())
+    .then(data => {
+      // نمایش پاسخ در صفحه
+      document.getElementById('chatBox').innerHTML += `<p>${data.reply}</p>`;
+    });
+  });
+</script>
+<div style="float:left;">
+    <h1>ما را از شبکه های اجتماعی دنبال کنید.</h1>
+    <a href="#"><i class="fa fa-phone">09142868079</i></a>
+    <br/> 
+    <a href="https://web.whatsapp.com/"><i class="fab fa-whatsapp">واتساپ</i></a>
+    <br/> 
+    <a href="https://www.instagram.com/p/DA6hZHaI_Ya/?igsh=bXJnZzF1ZnRxcHJw"><i class="fab fa-instagram">انستاگرام</i></a>
+    <br/>
+    <a href="ali.sorkhabi.1373@gmail.com"><i class="fa fa-envelope">ایمیل</i></a> 
 
-        .search-box {
-            flex: 1 1 100%;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .search-box input[type="text"] {
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: none;
-            width: 60%;
-            max-width: 300px;
-        }
-
-        .search-box button {
-            padding: 5px 15px;
-            border-radius: 5px;
-            border: none;
-            background-color: white;
-            color: purple;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* بخش اصلی */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 20px;
-            gap: 20px;
-        }
-
-        .upload-section, .comments-section, .social-section {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            flex: 1 1 45%;
-            min-width: 280px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        .upload-section h2,
-        .comments-section h2,
-        .social-section h2 {
-            color: purple;
-            text-align: center;
-        }
-
-        .upload-section input[type="file"],
-        .comments-section input,
-        .comments-section textarea {
-            display: block;
-            width: 95%;
-            margin: 10px auto;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .upload-section button,
-        .comments-section button {
-            display: block;
-            width: 50%;
-            margin: 10px auto;
-            padding: 10px;
-            background-color: purple;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .social-section a {
-            display: block;
-            margin: 5px 0;
-            color: purple;
-            text-decoration: none;
-        }
-
-        /* فوتر */
-        footer {
-            backgrou
+</div>
+</body>
+</html>!
