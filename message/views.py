@@ -1,4 +1,5 @@
-from django.views.generic import FormView
+from django.views.generic import FormView 
+from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from .models import Login, Home1, Home2, Home3
 from .forms import LoginForm, Home1Form, Home2Form, Home3Form
@@ -14,7 +15,7 @@ class LoginView(FormView):
         return super().form_valid(form)
 
 # صفحه آپلود فایل ها
-class Home1View(FormView):
+class Home1View(CreateView):
     template_name = 'home1.html'
     form_class = Home1Form
     success_url = reverse_lazy('home2')  # بعد از آپلود به home2 منتقل شود

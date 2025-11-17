@@ -31,13 +31,7 @@ class LoginForm(forms.ModelForm):
 class Home1Form(forms.ModelForm):
     class Meta:
         model = Home1
-        fields = ['images', 'audio', 'video', 'pdf']
-        widgets = {
-            'images': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'audio': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'video': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'pdf': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-        }
+        fields = ['title', 'file']
 
 # ----------------------
 # فرم Home2 (شکایات / سوالات / انتقادات / سایر موارد)

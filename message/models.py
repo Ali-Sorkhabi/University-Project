@@ -20,10 +20,10 @@ class Login(models.Model):
 # -------------------------
 class Home1(models.Model):
     title = models.CharField(max_length=100)
-    images = models.ImageField(upload_to='images/')
-    audio = models.FileField(upload_to='audio/')
-    video = models.FileField(upload_to='videos/')
-    pdf = models.FileField(upload_to='pdf/')
+    file = models.FileField(upload_to='uploades/', default='')
+    # audio = models.FileField(upload_to='audio/')
+    # video = models.FileField(upload_to='videos/')
+    # pdf = models.FileField(upload_to='pdf/')
 
     def __str__(self):
         return self.title
